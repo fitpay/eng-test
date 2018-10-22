@@ -7,11 +7,11 @@ API resource created that will decrease the number of network calls being made.
 
 ### Technology Assumptions
 * Technology choice is whatever platform you're comfortable in
-** If you chose a java based solution, a very basic spring-boot application is included.
+  * If you chose a java based solution, a very basic spring-boot application is included.
 * API credentials and/or bearer tokens can be hard coded with values obtained out-of-band
 * You're familiar with [curl](https://curl.haxx.se) for testing Restful APIs
 * Your solution can ideally be launched with a single command, if not instructions MUST be provided so we can test your new API
-** Example `mvn spring-boot:run`
+  * Example `mvn spring-boot:run`
 
 ### Overview
 
@@ -32,14 +32,14 @@ GET http://localhost:8080/compositeUsers/:userId
 * Given the `userId` as part of the URL path, retrieve the underlying API resources from the FitPay API
 * The `Content-Type` returned MUST be `application/json`
 * The JSON returned MUST at least include the following elements
-** `userId`
-** `creditCardId`
-** `state` for both devices and creditCards
-** `deviceId`
+  * `userId`
+  * `creditCardId`
+  * `state` for both devices and creditCards
+  * `deviceId`
 * The `devices` and `creditCards` MUST support lists of 0-n values
 * The API SHOULD support two optional filters
-** `creditCardState` - Filter credit cards by `state` if query parameter specified
-** `deviceState` - Filter device by `state` if query parameter is specified
+  * `creditCardState` - Filter credit cards by `state` if query parameter specified
+  * `deviceState` - Filter device by `state` if query parameter is specified
 
 Example Requests:
 ```
