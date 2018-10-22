@@ -28,7 +28,7 @@ GET http://localhost:8080/compositeUsers/:userId
 ** `creditCardId`
 ** `state` for both devices and creditCards
 ** `deviceId`
-* The `devices` and `credtiCards` MUST support lists of 0-n values
+* The `devices` and `creditCards` MUST support lists of 0-n values
 * The API SHOULD support two optional filters
 ** `creditCardState` - Filter credit cards by `state` if query parameter specified
 ** `deviceState` - Filter device by `state` if query parameter is specified
@@ -45,7 +45,7 @@ GET http://api.qa.fitpay.ninja/compositeUsers/:userId?creditCardState=ERROR&devi
 ### Notes
 * The endpoint will present self-signed SSL certificates, you'll need to either disable SSL validation all together or download and import the certificate into your trusted store.
 * You'll be using our development/testing environment, which at times can be unstable.  You can validate the health of the environment [here](https://api.qa.fitpay.ninja/health).
-* Review the JSON returned by the API to see if there our hints and useful things that can assist in making further API invocations
+* Review the JSON returned by the API to see if there are hints and useful things that can assist in making further API invocations
 
 ### API Authentication
 
