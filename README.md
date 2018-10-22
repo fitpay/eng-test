@@ -20,7 +20,7 @@ API clients typically need to make three separate network calls to obtain all th
 ```
 GET https://api.qa.fitpay.ninja/users/:userId
 GET https://api.qa.fitpay.ninja/users/:userId/devices
-GET https://api.qa.fitpay.ninja/users/:userId/creditCard
+GET https://api.qa.fitpay.ninja/users/:userId/creditCards
 ```
 
 We need a new API resource that composes these 3 separate calls into a single JSON structure so our API clients don't need to make 3 network calls anymore:
