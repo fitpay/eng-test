@@ -2,6 +2,9 @@ package fitpay.engtest.model;
 
 import java.util.List;
 
+/**
+ * Model defining Credit Cards Json object structure
+ */
 public class CreditCards {
 
     private List<CreditCard> results;

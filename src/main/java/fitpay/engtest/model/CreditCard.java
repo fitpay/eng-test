@@ -2,6 +2,9 @@ package fitpay.engtest.model;
 
 import fitpay.engtest.state.CreditCardState;
 
+/**
+ * Model defining Credit Card Json object structure
+ */
 public class CreditCard {
 
     private String creditCardId;

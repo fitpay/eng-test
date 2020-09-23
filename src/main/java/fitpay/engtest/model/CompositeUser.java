@@ -1,6 +1,7 @@
 package fitpay.engtest.model;
 
 import java.util.List;
+import java.util.UUID;
 
 import fitpay.engtest.exception.CompositeUserException;
 import fitpay.engtest.state.CreditCardState;
@@ -12,49 +13,35 @@ import fitpay.engtest.state.State;
  */
 public class CompositeUser {
 
-	// private long id;
+	private String id = UUID.randomUUID().toString();
 	private String userId;
 	private List<CreditCard> creditCards;
 	private List<Device> devices;
 	private State state;
 
-	public CompositeUser(String userId, String creditCardState, String deviceState){
-
-		System.out.println(String.format("userId: %s \n CCS: %s \n DS: %s", userId, creditCardState, deviceState));
+	public CompositeUser(String userId, String creditCardState, String deviceState) {
 
 		this.userId = userId;
 
-		// if(!creditCardState.isEmpty())
-		//May have to handle null states and invalid states here
-
 		CreditCardState ccState = null;
 		DeviceState dState = null;
-		if(creditCardState != null){
-			// try {
-				ccState = CreditCardState.valueOf(creditCardState);
-				
-			// } catch(IllegalArgumentException iae) {
-			// 	throw new CompositeUserException("Invalid creditCardState", iae);
-			// }
-
-		
+		if (creditCardState != null) {
+			ccState = CreditCardState.valueOf(creditCardState);
 		}
-		if(deviceState != null) {
+		if (deviceState != null) {
 			dState = DeviceState.valueOf(deviceState);
 		}
 		this.state = new State(ccState, dState);
-
 	}
 
-	public CompositeUser(String userId) throws CompositeUserException{
-
+	public CompositeUser(String userId) throws CompositeUserException {
 		new CompositeUser(userId, null, null);
 	}
 
 	public String getUserId() {
 		return userId;
 	}
-	
+
 	public State getState() {
 		return state;
 	}
@@ -74,4 +61,9 @@ public class CompositeUser {
 	public void setDevices(List<Device> devices) {
 		this.devices = devices;
 	}
+
+	public String getId() {
+		return id;
+	}
+
 }
