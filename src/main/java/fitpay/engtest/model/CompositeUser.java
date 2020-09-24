@@ -3,7 +3,6 @@ package fitpay.engtest.model;
 import java.util.List;
 import java.util.UUID;
 
-import fitpay.engtest.exception.CompositeUserException;
 import fitpay.engtest.state.CreditCardState;
 import fitpay.engtest.state.DeviceState;
 import fitpay.engtest.state.State;
@@ -33,10 +32,6 @@ public class CompositeUser {
 			dState = DeviceState.valueOf(deviceState);
 		}
 		this.state = new State(ccState, dState);
-	}
-
-	public CompositeUser(String userId) {
-		new CompositeUser(userId, null, null);
 	}
 
 	public String getUserId() {

@@ -17,6 +17,9 @@ import fitpay.engtest.model.Devices;
 import fitpay.engtest.state.CreditCardState;
 import fitpay.engtest.state.DeviceState;
 
+/**
+ * Retrieves and builds CompositeUser Object
+ */
 public class CompositeUserBuilder {
 
     private final String USER_URL = "https://api.qa.fitpay.ninja/users";
