@@ -23,6 +23,7 @@ public class CompositeUser {
 
 		this.userId = userId;
 
+		// Convert state string values to enums
 		CreditCardState ccState = null;
 		DeviceState dState = null;
 		if (creditCardState != null) {
@@ -34,7 +35,7 @@ public class CompositeUser {
 		this.state = new State(ccState, dState);
 	}
 
-	public CompositeUser(String userId) throws CompositeUserException {
+	public CompositeUser(String userId) {
 		new CompositeUser(userId, null, null);
 	}
 

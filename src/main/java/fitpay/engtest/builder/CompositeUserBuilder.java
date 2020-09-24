@@ -1,4 +1,4 @@
-package fitpay.engtest;
+package fitpay.engtest.builder;
 
 import java.util.Iterator;
 import java.util.List;
@@ -43,15 +43,10 @@ public class CompositeUserBuilder {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + bearerToken);
         final String uri = String.format("%s/%s/creditCards", USER_URL, cUser.getUserId());
-        RestTemplate restTemplate = new RestTemplate();
         HttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
 
         // Send off request
-        ResponseEntity<CreditCards> response = restTemplate.exchange(uri, HttpMethod.GET, requestEntity,
-                CreditCards.class);
-        System.out.println(String.format("Retrieved info from: %s", uri));
-
-        List<CreditCard> creditCards = response.getBody().getResults();
+        List<CreditCard> creditCards = getCreditCardList(uri, requestEntity);
 
         CreditCardState cCState = cUser.getState().getCreditCardState();
         // filter results if user has state
@@ -79,15 +74,12 @@ public class CompositeUserBuilder {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + bearerToken);
         final String uri = String.format("%s/%s/devices", USER_URL, cUser.getUserId());
-        RestTemplate restTemplate = new RestTemplate();
         HttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
 
         // Send off request
-        ResponseEntity<Devices> response = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, Devices.class);
-        System.out.println(String.format("Retrieved info from: %s", uri));
+        List<Device> devices = getDeviceList(uri, requestEntity);
 
         // Filter devices if specified
-        List<Device> devices = response.getBody().getResults();
         DeviceState dState = cUser.getState().getDeviceState();
         if (dState != null) {
             System.out.println(String.format("Filtering Devices with state: %s", dState));
@@ -131,6 +123,45 @@ public class CompositeUserBuilder {
                 iter.remove();
             }
         }
+    }
+
+    /**
+     * Helper method to make the actual REST call (to help with mocking tests)
+     * 
+     * @param uri           the address of the request
+     * @param requestEntity the request parameters
+     * @return the list of credit cards
+     */
+    protected List<CreditCard> getCreditCardList(String uri, HttpEntity<String> requestEntity) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        // Send off request
+        ResponseEntity<CreditCards> response = restTemplate.exchange(uri, HttpMethod.GET, requestEntity,
+                CreditCards.class);
+        System.out.println(String.format("Retrieved info from: %s", uri));
+
+        List<CreditCard> creditCards = response.getBody().getResults();
+
+        return creditCards;
+    }
+
+    /**
+     * Helper method to make the actual REST call (to help with mocking tests)
+     * 
+     * @param uri           the address of the request
+     * @param requestEntity the request parameters
+     * @return the list of credit cards
+     */
+    protected List<Device> getDeviceList(String uri, HttpEntity<String> requestEntity) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        // Send off request
+        ResponseEntity<Devices> response = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, Devices.class);
+        System.out.println(String.format("Retrieved info from: %s", uri));
+
+        List<Device> devices = response.getBody().getResults();
+
+        return devices;
     }
 
 }
