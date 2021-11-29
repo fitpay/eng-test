@@ -51,7 +51,6 @@ GET http://localhost:8080/compositeUsers/:userId?creditCardState=ERROR&deviceSta
 ## API Integration Details
 
 ### Notes
-* The endpoint will present self-signed SSL certificates, you'll need to either disable SSL validation all together or download and import the certificate into your trusted store.
 * You'll be using our development/testing environment, which at times can be unstable.  You can validate the health of the environment [here](https://api.qa.fitpay.ninja/health).
 * Review the JSON returned by the API to see if there are hints and useful things that can assist in making further API invocations
 
@@ -60,7 +59,7 @@ GET http://localhost:8080/compositeUsers/:userId?creditCardState=ERROR&deviceSta
 Authentication is achieved through an oauth2 bearer token, obtained through a client_credentials grant utilizing the credentials issued to you from FitPay:
 
 ```
-curl -s --insecure -u CLIENT_ID:CLIENT_SECRET https://auth.qa.fitpay.ninja/oauth/token?grant_type=client_credentials
+curl -s -u "CLIENT_ID:CLIENT_SECRET" 'https://auth.qa.fitpay.ninja/oauth/token?grant_type=client_credentials'
 ```
 
 ### Getting Users
@@ -68,7 +67,7 @@ curl -s --insecure -u CLIENT_ID:CLIENT_SECRET https://auth.qa.fitpay.ninja/oauth
 Using the `access_token` retrieved above, obtaining a collection of users:
 
 ```
-curl -s --insecure -H "Authorization: Bearer TOKEN" https://api.qa.fitpay.ninja/users?limit=10
+curl -s -H "Authorization: Bearer TOKEN" 'https://api.qa.fitpay.ninja/users?limit=10'
 ```
 
 ### Getting an Individual User
@@ -76,7 +75,7 @@ curl -s --insecure -H "Authorization: Bearer TOKEN" https://api.qa.fitpay.ninja/
 Using the `access_token` retrieved above, obtaining an individual user:
 
 ```
-curl -s --insecure -H "Authorization: Bearer TOKEN" https://api.qa.fitpay.ninja/users/:userId
+curl -s -H "Authorization: Bearer TOKEN" 'https://api.qa.fitpay.ninja/users/:userId'
 ```
 
 ### Getting an Individual User's Devices
@@ -84,7 +83,7 @@ curl -s --insecure -H "Authorization: Bearer TOKEN" https://api.qa.fitpay.ninja/
 Using the `access_token` retrieved above, obtaining a collection of a user's devices:
 
 ```
-curl -s --insecure -H "Authorization: Bearer TOKEN" https://api.qa.fitpay.ninja/users/:userId/devices
+curl -s -H "Authorization: Bearer TOKEN" 'https://api.qa.fitpay.ninja/users/:userId/devices'
 ```
 
 ### Getting an Individual User's Credit Cards
@@ -92,7 +91,7 @@ curl -s --insecure -H "Authorization: Bearer TOKEN" https://api.qa.fitpay.ninja/
 Using the `access_token` retrieved above, obtaining a collection of a users's credit cards:
 
 ```
-curl -s --insecure -H "Authorization: Bearer TOKEN" https://api.qa.fitpay.ninja/users/:userId/creditCards
+curl -s -H "Authorization: Bearer TOKEN" 'https://api.qa.fitpay.ninja/users/:userId/creditCards'
 ```
 
 More details API documentation can be found [here](https://anypoint.mulesoft.com/apiplatform/fitpay/#/portals/organizations/fd8d2eae-7955-4ec9-b009-b03635fe994b/apis/24399/versions/25936).
