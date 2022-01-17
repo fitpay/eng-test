@@ -95,3 +95,5 @@ curl -s -H "Authorization: Bearer TOKEN" 'https://api.qa.fitpay.ninja/users/:use
 ```
 
 More details API documentation can be found [here](https://anypoint.mulesoft.com/apiplatform/fitpay/#/portals/organizations/fd8d2eae-7955-4ec9-b009-b03635fe994b/apis/24399/versions/25936).
+
+Test
